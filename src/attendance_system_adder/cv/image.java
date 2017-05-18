@@ -22,7 +22,7 @@ import org.opencv.imgproc.Imgproc;
 import static org.opencv.imgproc.Imgproc.COLOR_RGB2GRAY;
 import static org.opencv.imgproc.Imgproc.cvtColor;
 import org.opencv.objdetect.CascadeClassifier;
-import org.opencv.contrib.*;
+//import org.opencv.contrib.*;
 
 /**
  *
@@ -206,18 +206,21 @@ public class image {
 
     
     public static void main(String[] args) {
-        image img = new image();
-        Mat readImage = img.readImageToMat("111.jpg", 0);
-        Mat RGBtoGRAY = img.RGBtoGRAY(readImage);
-        Mat faceDetecInRect = img.FaceDetec(RGBtoGRAY);
-        System.out.println(readImage);
-        //System.out.println(faceDetecInRect);
+//        image img = new image();
+//        Mat readImage = img.readImageToMat("111.jpg", 0);
+//        Mat RGBtoGRAY = img.RGBtoGRAY(readImage);
+//        Mat faceDetecInRect = img.FaceDetec(RGBtoGRAY);
+//        System.out.println(readImage);
+//        //System.out.println(faceDetecInRect);
+//        
+//        //Mat RGBtoGRAY = img.RGBtoGRAY(readImage);
+//        
+//        
+//       // img.displayImage(readImage);
+//        img.saveImage("222.png", RGBtoGRAY);
         
-        //Mat RGBtoGRAY = img.RGBtoGRAY(readImage);
         
         
-       // img.displayImage(readImage);
-        img.saveImage("222.jpg", RGBtoGRAY);
         
     }
     

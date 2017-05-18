@@ -13,6 +13,7 @@ import org.opencv.calib3d.*;
 import org.opencv.video.Video;
 import org.opencv.videoio.*;
 import org.opencv.core.Core;
+import org.opencv.face.*;
 
 
 
@@ -38,6 +39,10 @@ public class Attendance_system_adder {
         
 //        video v = new video();
 //        v.displayVideo(0);
+//        LBPHFaceRecognizer LBPHFaceRecognizer = Face.createLBPHFaceRecognizer();
+//        LBPHFaceRecognizer.train(src, labels);
+        
+        
     }
     
 }
