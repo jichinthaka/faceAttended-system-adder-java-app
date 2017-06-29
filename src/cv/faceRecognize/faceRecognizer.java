@@ -20,9 +20,13 @@ import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 //import cv.faceRecognize.fileHandler1;
 import java.io.File;
+import java.io.IOException;
 import java.nio.IntBuffer;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.opencv.core.Core;
+import static org.opencv.core.CvType.CV_32SC1;
 
 //class fileHandler {
 //    
@@ -73,7 +77,7 @@ import org.opencv.core.Core;
 //}
 
 public class faceRecognizer {
-    fileHandler f;
+    fileHandler fileHandler;
     FaceRecognizer fr;
     LBPHFaceRecognizer LBPHFaceRecognizer;
     image im;
@@ -84,7 +88,7 @@ public class faceRecognizer {
     public faceRecognizer() {
         LBPHFaceRecognizer = Face.createLBPHFaceRecognizer();
         
-        this.f = new fileHandler();
+        this.fileHandler = new fileHandler();
         path = ".\\photos\\";
         faces = new ArrayList();
         im = new image();
@@ -96,8 +100,8 @@ public class faceRecognizer {
     }
     
     public void facesFromPhotos(){
-        f.collecter(path);
-        ArrayList<Mat> images = f.getImages();
+        fileHandler.collecter(path);
+        ArrayList<Mat> images = fileHandler.getImages();
 //        System.out.println(images.get(0).toString());
 //        
 //        System.out.println(images.toString());
@@ -139,10 +143,27 @@ public class faceRecognizer {
     }
     
     public void tainFaceRecognizer(){
-        Mat lableMat = ListToMat(f.getImageLablesNo());
+        Mat lableMat = new Mat(fileHandler.getImageLablesNo().size(), 1, CV_32SC1);
+        //IntBuffer labelsBuf = lableMat.;
+        
+        for(int i=0; i<=fileHandler.getImageLablesNo().size();i++){
+            
+        }
         
         LBPHFaceRecognizer.train(faces, lableMat);
         
+        
+        
+    }
+    
+    public void trainpy(){
+        String cmd = "F:\\";
+        String py="faceTrainSave";
+        try {
+            Runtime.getRuntime().exec("python "+cmd + py + ".py");
+        } catch (IOException ex) {
+            Logger.getLogger(faceRecognizer.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void saveFacerecognizer(){
@@ -157,9 +178,10 @@ public class faceRecognizer {
 //        
         
         faceRecognizer fr = new faceRecognizer();
-        fr.facesFromPhotos();
-        fr.tainFaceRecognizer();
-        fr.saveFacerecognizer();
+        fr.trainpy();
+        //fr.facesFromPhotos();
+        //fr.tainFaceRecognizer();
+        //fr.saveFacerecognizer();
 
 //        fileHandler f = new fileHandler();
 //        image image = new image();
